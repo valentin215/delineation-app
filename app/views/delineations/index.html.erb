@@ -9,12 +9,12 @@
   
     <div class="forms">
       <div class="import">
+      <p>Upload your CSV file</p>
         <%= form_for :csv_import, url: delineation_import_csv_path do |f| %>
-          <%= f.label :file, "Upload CSV File" %>
           <%= f.file_field :file, required: true %>
-          <%= f.time_select :time %>
-          <%= f.date_select :date %>
-          <%= f.button :submit %>
+          <div><%= f.time_select :time, required: true %></div>
+          <div><%= f.date_select :date, required: true %></div>
+          <div><%= f.button :submit %></div>
         <% end %>
       </div>
       <div class="export">

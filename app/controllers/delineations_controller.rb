@@ -6,9 +6,9 @@ class DelineationsController < ApplicationController
     def import_csv
       arr_qrs, max_rate, min_rate, results = []
       premature_qrs, premature_p = 0
-      time = params[:time]
-      date = params[:date].to_date
-      CSV.foreach(params[:file].path, headers: false) do |row|
+      time = params.dig(:csv_import, :time)
+      date = params.dig(:csv_import, :date).to_date
+      CSV.foreach(params[:csv_import][:file].path, headers: false) do |row|
         next if row[0] == 'INV' || 'T'
         if row[0] == 'QRS'
           arr_qrs << [row[2], row[1]]
