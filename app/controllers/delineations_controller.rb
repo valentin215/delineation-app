@@ -40,8 +40,8 @@ class DelineationsController < ApplicationController
         mean_rate: frequency_per_minute,
         min_heart_rate: min_rate,
         max_heart_rate: max_rate,
-        time_min_rate:  wave_time_min,
-        time_max_rate:  wave_time_max,
+        time_min_rate: wave_time_min,
+        time_max_rate: wave_time_max,
         day: date
       )
 
@@ -49,4 +49,10 @@ class DelineationsController < ApplicationController
     end 
     
     def export_csv;end
+
+    private 
+
+    def set_params
+      params.require(:delineation).permit(:file, :time, :date)
+    end 
 end

@@ -4,8 +4,8 @@ class CreateDelineations < ActiveRecord::Migration[6.0]
       t.integer :p_waves
       t.integer :qrs
       t.decimal :mean_rate
-      t.integer :min_rate
-      t.integer :max_rate
+      t.integer :min_heart_rate
+      t.integer :max_heart_rate
       t.time :time_min_rate
       t.time :time_max_rate
       t.time :start_time

@@ -5,6 +5,11 @@
   padding: 40px;
 }
 
+.u-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
 .export, .import {
   padding: 10px;
   border: solid 1px grey;
@@ -19,6 +24,7 @@
 .results {
   border: solid 1px grey;
   padding: 10px;
+  min-width: 33.33%;
 }
 
 .title {

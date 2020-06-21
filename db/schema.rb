@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 2020_06_21_134813) do
     t.integer "max_heart_rate"
     t.time "time_min_rate"
     t.time "time_max_rate"
+    t.time "start_time"
+    t.time "end_time"
     t.date "day"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
