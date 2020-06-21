@@ -1,24 +1,27 @@
 <div class="wrapper">
   <p class="title">Delineations</p>
-    <div class="wrapper__content">
-      <div class="results">
-        <p>TESddddddddT</p>
-        <p>TEST</p>
-        <p>TEST</p>
-      </div>
-  
+  <div class="wrapper__content">
+    <div class="results">
+      <div><%= @imported_results.p_waves %></div>
+      <div><%= @imported_results.qrs %></div>
+      <div><%= @imported_results.frequency_per_minute %></div>
+      <div><%= @imported_results.min_rate %></div>
+      <div><%= @imported_results.max_rate %></div>
+      <div><%= @imported_results.wave_time_min %></div>
+      <div><%= @imported_results.wave_time_max %></div>
+    </div>
     <div class="forms">
       <div class="import">
       <p>Upload your CSV file</p>
         <%= form_for :csv_import, url: delineation_import_csv_path do |f| %>
           <%= f.file_field :file, required: true %>
-          <div><%= f.time_select :time, required: true %></div>
-          <div><%= f.date_select :date, required: true %></div>
+          <div><%= f.time_field :time, required: true %></div>
+          <div><%= f.date_field :date, required: true %></div>
           <div><%= f.button :submit %></div>
         <% end %>
       </div>
       <div class="export">
-        <p>TEST</p>
+        <p>Download your CSV file</p>
       </div>
     </div>
   </div>
