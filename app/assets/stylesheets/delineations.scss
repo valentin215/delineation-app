@@ -1,3 +1,27 @@
 // Place all the styles related to the Delineations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.wrapper {
+  padding: 40px;
+}
+
+.export, .import {
+  padding: 10px;
+  border: solid 1px;
+  margin-bottom: 10px;
+}
+
+.wrapper__content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.results {
+  border: solid 1px;
+  padding: 10px;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: bold;
+}
