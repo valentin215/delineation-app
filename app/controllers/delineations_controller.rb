@@ -1,0 +1,2 @@
+class DelineationsController < ApplicationController
+end
