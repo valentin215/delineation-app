@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  p_waves: 1
+  qrs: 1
+  mean_rate: 9.99
+  min_rate: 1
+  max_rate: 1
+  time_min_rate: 2020-06-21 15:48:13
+  time_max_rate: 2020-06-21 15:48:13
+  start_time: 2020-06-21 15:48:13
+  end_time: 2020-06-21 15:48:13
+  day: 2020-06-21
+
+two:
+  p_waves: 1
+  qrs: 1
+  mean_rate: 9.99
+  min_rate: 1
+  max_rate: 1
+  time_min_rate: 2020-06-21 15:48:13
+  time_max_rate: 2020-06-21 15:48:13
+  start_time: 2020-06-21 15:48:13
+  end_time: 2020-06-21 15:48:13
+  day: 2020-06-21

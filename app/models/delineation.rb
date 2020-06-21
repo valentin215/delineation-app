@@ -1,0 +1,2 @@
+class Delineation < ApplicationRecord
+end
