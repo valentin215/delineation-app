@@ -4,11 +4,11 @@
     <div class="results">
       <div class="u-flex"><p>P waves "prematured":</p><p><%= @imported_results&.p_waves %></p></div>
       <div class="u-flex"><p>QRS waves "prematured":</p><p><%= @imported_results&.qrs %></p></div>
-      <div class="u-flex"><p>Mean heart rate (frequency per minute):</p><p><%= @imported_results&.mean_rate.round(4) %></p></div>
+      <div class="u-flex"><p>Mean heart rate (frequency per minute):</p><p><%= @imported_results&.mean_rate&.round(4) %></p></div>
       <div class="u-flex"><p>Mininum heart rate (in ms):</p><p><%= @imported_results&.min_heart_rate %></p></div>
       <div class="u-flex"><p>Maximum heart rate (in ms):</p><p><%= @imported_results&.max_heart_rate %></p></div>
-      <div class="u-flex"><p>Time minimum heart rate:</p><p><%= @imported_results&.time_min_rate.strftime("%T") %></p></div>
-      <div class="u-flex"><p>Time maximum heart rate:</p><p><%= @imported_results&.time_max_rate.strftime("%T") %></p></div>
+      <div class="u-flex"><p>Time minimum heart rate:</p><p><%= @imported_results&.time_min_rate&.strftime("%T") %></p></div>
+      <div class="u-flex"><p>Time maximum heart rate:</p><p><%= @imported_results&.time_max_rate&.strftime("%T") %></p></div>
     </div>
     <div class="forms">
       <div class="import">
