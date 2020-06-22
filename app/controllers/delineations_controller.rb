@@ -1,54 +1,30 @@
 class DelineationsController < ApplicationController
     def index
-      @imported_results = Delineation.last
+      @delineation_results = Delineation.last
     end 
 
     def import_csv
-      arr_qrs, arr_diff_qrs_waves, max_rate, min_rate = [], [], [], []
-      max_time_ms, min_time_ms, premature_qrs, premature_p = 0, 0, 0, 0
-      time = params.dig(:csv_import, :time)
+      # post method that will calculate create new delineations thanks to the service
+      starting_time = params.dig(:csv_import, :time)
       date = params.dig(:csv_import, :date).to_date
+      csv = params[:csv_import][:file]
 
-      CSV.foreach(params[:csv_import][:file].path, headers: false) do |row|
-        next if row[0] == 'INV' || row[0] == 'T'
-        if row[0] == 'QRS'
-          arr_qrs << [row[1], row[2]]
-          if row[3] == 'premature' || row[4] == 'premature'
-            premature_qrs += 1
-          end 
-        elsif row[0] == 'P' && (row[3] == 'premature' || row[4] == 'premature')
-          premature_p += 1
-        end 
-      end 
-
-      arr_diff_qrs_waves = arr_qrs.map { |waves| waves[1].to_i - waves[0].to_i }
-      mean_rate = arr_diff_qrs_waves.sum / arr_diff_qrs_waves.length
-      frequency_per_minute = 60 / (mean_rate.to_f / 1000)
-
-      min_rate = arr_diff_qrs_waves.min
-      max_rate = arr_diff_qrs_waves.max
-
-      max_time_ms = arr_qrs[arr_diff_qrs_waves.index(max_rate)][1]
-      min_time_ms = arr_qrs[arr_diff_qrs_waves.index(min_rate)][1]
-
-      wave_time_max = time.to_time + (max_time_ms.to_f / 6000).minutes
-      wave_time_min = time.to_time + (min_time_ms.to_f / 6000).minutes
-
-      Delineation.create(
-        p_waves: premature_p,
-        qrs: premature_qrs,
-        mean_rate: frequency_per_minute,
-        min_heart_rate: min_rate,
-        max_heart_rate: max_rate,
-        time_min_rate: wave_time_min,
-        time_max_rate: wave_time_max,
-        day: date
-      )
+      DelineationService.generate_delineations(csv, starting_time, date)
 
       redirect_to root_url, notice: "Data imported"
     end 
     
-    def export_csv;end
+    def export_csv
+      # this method is the beginning of the anwser of the bonus question
+      # The following steps are what I wanted to do to retrieve cvs datas:
+      # 1 - we create a hash with the following structure : { date: { hour: { data: [] } } }
+      # 2 - the date is the date picked by the cardiolog, the hour will be 1,2..24 and data will be and an array of arrays. Each array will be a row of csv
+      # 3 - we populate the hash during the loop over the csv file
+      # 4 - we create a get method with inputs that will send params of date and hours
+      # 5 - we retrieve our csv datas passing params as keys 
+      # 6 - we transforme our array of arrays into CSV
+      # 7 - the user can get his CSV file downloaded with a range of hours
+    end
 
     private 
 
